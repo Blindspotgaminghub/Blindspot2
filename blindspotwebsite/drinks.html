@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="x-icon" href="img/blindspot.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlindSpot Drinks</title>
+<style>
+    /* Reset */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
+    html, body { height:100%; }
+
+    body {
+        display:flex;
+        flex-direction:column;
+        background:url('img/blindspot.jpg') no-repeat center center fixed;
+        background-size:cover;
+        color:#fff;
+    }
+
+    .overlay {
+        position:absolute;
+        top:0; left:0; width:100%; height:100%;
+        background-color: rgba(0,0,0,0.7);
+        z-index:0;
+    }
+
+    header {
+        position:relative; z-index:1;
+        padding:30px 20px;
+        text-align:center;
+        background-color:rgba(17,24,39,0.8);
+        box-shadow:0 4px 6px rgba(0,0,0,0.5);
+    }
+
+    header h1 { font-size:2.5rem; color:#00d1ff; }
+
+    main {
+        position:relative; z-index:1;
+        flex:1;
+        padding:50px 20px;
+    }
+
+    .notice {
+        text-align:center;
+        font-size:1.2rem;
+        margin-bottom:25px;
+        color:#fff;
+        text-shadow: 1px 1px 3px #000;
+    }
+
+    .drink-grid {
+        display:grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+        gap:25px;
+        max-width:1200px;
+        margin:auto;
+    }
+
+    .drink-card {
+        background-color: rgba(31,41,55,0.85);
+        border-radius:15px;
+        text-align:center;
+        padding:15px;
+        box-shadow:0 5px 15px rgba(0,0,0,0.5);
+        transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .drink-card:hover {
+        transform: translateY(-8px);
+        background-color: rgba(17,24,39,0.9);
+    }
+
+    .drink-card img {
+        width:100%;
+        height:180px;
+        object-fit:cover;
+        border-radius:10px;
+        margin-bottom:10px;
+    }
+
+    .drink-card h3 {
+        font-size:1.2rem;
+        margin-bottom:5px;
+        color:#00d1ff;
+    }
+
+    .back-btn {
+        display:inline-block;
+        margin-bottom:30px;
+        padding:10px 20px;
+        background-color:#00d1ff;
+        color:#111827;
+        border-radius:8px;
+        text-decoration:none;
+        font-weight:bold;
+        transition: background-color 0.3s;
+    }
+
+    .back-btn:hover { background-color:#00b8e0; }
+
+    footer {
+        position:relative; z-index:1;
+        background-color:rgba(17,24,39,0.8);
+        text-align:center;
+        padding:20px;
+        box-shadow:0 -4px 6px rgba(0,0,0,0.5);
+    }
+</style>
+</head>
+<body>
+<div class="overlay"></div>
+
+<header>
+    <h1>BlindSpot Drinks</h1>
+</header>
+
+<main>
+    <a href="services.html" class="back-btn">← Back to Services</a>
+
+    <!-- Notice / Text -->
+    <div class="notice">
+        You can suggest your drinks to bring here in our list, our Snacks  bring soon thank you.
+    </div>
+
+    <section class="drink-grid">
+        <div class="drink-card">
+            <img src="drinks/cobra.webp" alt="Cobra">
+            <h3>Cobra</h3>
+        </div>
+        <div class="drink-card">
+            <img src="drinks/sting.jpg" alt="Sting">
+            <h3>Sting</h3>
+        </div>
+        <div class="drink-card">
+            <img src="drinks/sprite.jpg" alt="Sprite">
+            <h3>Sprite</h3>
+        </div>
+        <div class="drink-card">
+            <img src="drinks/coke.jpg" alt="Coke">
+            <h3>Coke</h3>
+        </div>
+        <div class="drink-card">
+            <img src="drinks/mdew.jpg" alt="Mountain Dew">
+            <h3>Mountain Dew</h3>
+        </div>
+        <div class="drink-card">
+            <img src="drinks/rootbeer.jpg" alt="Root Beer">
+            <h3>Root Beer</h3>
+        </div>
+        <div class="drink-card">
+            <img src="drinks/zes o.jpg" alt="Zes O">
+            <h3>Zes O</h3>
+        </div>
+        <div class="drink-card">
+            <img src="drinks/choco.jpg" alt="Choco">
+            <h3>Choco</h3>
+        </div>
+        <div class="drink-card">
+            <img src="drinks/c2.jpg" alt="C2">
+            <h3>C2</h3>
+        </div>
+        <div class="drink-card">
+            <img src="drinks/water.webp" alt="Water">
+            <h3>Water</h3>
+        </div>
+        <div class="drink-card">
+            <img src="drinks/royal.jpg" alt="Royal">
+            <h3>Royal</h3>
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 BlindSpot Gaming Café. All Rights Reserved.
+</footer>
+<!-- Background Music -->
+    <audio id="bg-music" autoplay loop>
+        <source src="music/videoplayback.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Toggle Button -->
+    <button id="music-toggle">Mute</button>
+
+    <script>
+        const music = document.getElementById('bg-music');
+        const toggleBtn = document.getElementById('music-toggle');
+
+        toggleBtn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                toggleBtn.textContent = 'Mute';
+            } else {
+                music.pause();
+                toggleBtn.textContent = 'Unmute';
+            }
+        });
+    </script>
+
+</body>
+</html>
