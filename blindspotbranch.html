@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="x-icon" href="img/blindspot.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlindSpot Branches</title>
+<style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
+    html, body { height:100%; }
+
+    body {
+        display:flex;
+        flex-direction:column;
+        background:url('img/blindspot.jpg') no-repeat center center fixed;
+        background-size:cover;
+        color:#fff;
+    }
+
+    .overlay {
+        position:absolute;
+        top:0; left:0; width:100%; height:100%;
+        background-color: rgba(0,0,0,0.7);
+        z-index:0;
+    }
+
+    header {
+        position:relative; z-index:1;
+        padding:30px 20px;
+        text-align:center;
+        background-color:rgba(17,24,39,0.8);
+        box-shadow:0 4px 6px rgba(0,0,0,0.5);
+    }
+
+    header h1 { font-size:2.5rem; color:#00d1ff; }
+
+    main {
+        position:relative; z-index:1;
+        flex:1;
+        padding:50px 20px;
+    }
+
+    .branch-grid {
+        display:grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+        gap:25px;
+        max-width:1200px;
+        margin:auto;
+    }
+
+    .branch-card {
+        background-color: rgba(31,41,55,0.85);
+        border-radius:15px;
+        text-align:center;
+        padding:15px;
+        box-shadow:0 5px 15px rgba(0,0,0,0.5);
+        transition: transform 0.3s, background-color 0.3s;
+        cursor:pointer;
+    }
+
+    .branch-card:hover {
+        transform: translateY(-8px);
+        background-color: rgba(17,24,39,0.9);
+    }
+
+    .branch-card img {
+        width:100%;
+        height:180px;
+        object-fit:cover;
+        border-radius:10px;
+        margin-bottom:10px;
+    }
+
+    .branch-card h3 {
+        font-size:1.3rem;
+        margin-bottom:5px;
+        color:#00d1ff;
+    }
+
+    .location-info {
+        margin-top:15px;
+        font-size:0.95rem;
+        text-align:center;
+        display:none;
+        background-color: rgba(0,0,0,0.6);
+        padding:10px;
+        border-radius:8px;
+    }
+
+    .back-btn {
+        display:inline-block;
+        margin-bottom:30px;
+        padding:10px 20px;
+        background-color:#00d1ff;
+        color:#111827;
+        border-radius:8px;
+        text-decoration:none;
+        font-weight:bold;
+        transition: background-color 0.3s;
+    }
+
+    .back-btn:hover { background-color:#00b8e0; }
+
+    footer {
+        position:relative; z-index:1;
+        background-color:rgba(17,24,39,0.8);
+        text-align:center;
+        padding:20px;
+        box-shadow:0 -4px 6px rgba(0,0,0,0.5);
+    }
+</style>
+</head>
+<body>
+<div class="overlay"></div>
+
+<header>
+    <h1>BlindSpot Branches</h1>
+</header>
+
+<main>
+    <a href="services.html" class="back-btn">← Back to Services</a>
+
+    <section class="branch-grid">
+        <!-- Manila Branch -->
+        <div class="branch-card" onclick="showLocation(this, 'J253+GH Manila, Metro Manila', 'Under of Cozy Hotel')">
+            <img src="branch/manila.png" alt="Manila Branch">
+            <h3>Manila</h3>
+            <div class="location-info"></div>
+        </div>
+
+        <!-- Caloocan Branch -->
+        <div class="branch-card" onclick="showLocation(this, 'JXQG+27 Caloocan, Metro Manila')">
+            <img src="branch/caloocan.png" alt="Caloocan Branch">
+            <h3>Caloocan</h3>
+            <div class="location-info"></div>
+        </div>
+
+        <!-- Billiard Branch -->
+        <div class="branch-card" onclick="showLocation(this, 'H2HM+23 Mandaluyong City, Metro Manila')">
+            <img src="branch/bill.png" alt="Billiard Branch">
+            <h3>Billiard</h3>
+            <div class="location-info"></div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 BlindSpot Gaming Café. All Rights Reserved.
+</footer>
+
+<script>
+function showLocation(card, mapCode, extraText='') {
+    const infoDiv = card.querySelector('.location-info');
+    infoDiv.style.display = 'block';
+    let mapsLink = `https://www.google.com/maps?q=${encodeURIComponent(mapCode)}`;
+    infoDiv.innerHTML = `<a href="${mapsLink}" target="_blank" style="color:#00d1ff; text-decoration:underline;">Open Map</a>` + (extraText ? `<p>${extraText}</p>` : '');
+    // Scroll to view the location info
+    infoDiv.scrollIntoView({behavior:'smooth', block:'center'});
+}
+</script>
+<!-- Background Music -->
+    <audio id="bg-music" autoplay loop>
+        <source src="music/videoplayback.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Toggle Button -->
+    <button id="music-toggle">Mute</button>
+
+    <script>
+        const music = document.getElementById('bg-music');
+        const toggleBtn = document.getElementById('music-toggle');
+
+        toggleBtn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                toggleBtn.textContent = 'Mute';
+            } else {
+                music.pause();
+                toggleBtn.textContent = 'Unmute';
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="img/blindspot.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlindSpot Services</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            background: url('img/blindspot.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 0;
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            z-index: 1;
+            padding: 30px 20px;
+            text-align: center;
+            background-color: rgba(17, 24, 39, 0.8);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #00d1ff;
+        }
+
+        /* Main content */
+        main {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .service-card {
+            display: block; /* Make the <a> fill the card */
+            background-color: rgba(31, 41, 55, 0.85);
+            width: 300px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s, background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(17, 24, 39, 0.9);
+        }
+
+        .service-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #00d1ff;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(17, 24, 39, 0.8);
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -4px 6px rgba(0,0,0,0.5);
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <header>
+        <h1>BlindSpot Services</h1>
+    </header>
+
+    <main>
+        <section class="services">
+            <!-- PC Rental -->
+            <a href="pcservice.html" class="service-card">
+                <img src="pcservice/monitor.webp" alt="PC Rental">
+                <h3>Pc Specs</h3>
+                <p>Play Valorant, CS2, League of Legends, and more on high-performance gaming PCs. Perfect for competitive and casual gamers.</p>
+                <h3>Click to view Specs</h3>
+            </a>
+
+            <!-- Food & Drinks -->
+            <a href="drinks.html" class="service-card">
+                <img src="drinks/logo.jpg" alt="Food & Drinks">
+                <h3>Food & Drinks</h3>
+                <p>Stay fueled while gaming! Snacks, energy drinks, and coffee to keep your skills sharp during long gaming sessions.</p>
+                <h3>Click to view drinks</h3>
+            </a>
+
+            <!-- BlindSpot Branch -->
+            <a href="blindspotbranch.html" class="service-card">
+                <img src="branch/loc.png" alt="BlindSpot Branch">
+                <h3>BlindSpot Branch</h3>
+                <p>Our additional branch for more gaming space and high-end PCs. Play with friends, join tournaments, or just chill in a great gaming environment.</p>
+                <h3>Click to view all branch</h3>
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2025 BlindSpot Gaming Café. All Rights Reserved.
+    </footer>
+    <!-- Background Music -->
+    <audio id="bg-music" autoplay loop>
+        <source src="music/videoplayback.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Toggle Button -->
+    <button id="music-toggle">Mute</button>
+
+    <script>
+        const music = document.getElementById('bg-music');
+        const toggleBtn = document.getElementById('music-toggle');
+
+        toggleBtn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                toggleBtn.textContent = 'Mute';
+            } else {
+                music.pause();
+                toggleBtn.textContent = 'Unmute';
+            }
+        });
+    </script>
+
+</body>
+</html>
